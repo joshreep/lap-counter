@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "60886487556",
+    "project_id": "lap-counter-dae7a",
+    "storage_bucket": "lap-counter-dae7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60886487556:android:57b514a34e4d5d2dffdb51",
+        "android_client_info": {
+          "package_name": "com.joshreep.lapcounter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60886487556-ofg1fvubai6ummio8oq8nnhqbmj301m3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFt3E6MDo_Dj5jQ4ja_gIGJRvKr5lVOWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60886487556-loq1ip7o08vut5q8t1lh4n5d5qmhdsr3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "60886487556-noe416jfp548b0ah14734utvq6s157d6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.joshreep.lapcounter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

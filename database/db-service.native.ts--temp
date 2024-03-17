@@ -1,0 +1,73 @@
+import firestore from '@react-native-firebase/firestore'
+import { InputRunnerRow, RunnerRow } from './types'
+import { useCallback, useEffect, useState } from 'react'
+
+const runnersRef = firestore().collection(`runners`)
+const runnersQuery = runnersRef.orderBy('lapCount', 'desc')
+
+export function useRunners() {
+  const [data, setData] = useState<RunnerRow[]>([])
+
+  const refreshData = useCallback(async () => {
+    try {
+      const querySnapshot = await runnersQuery.get()
+      setData(querySnapshot.docs.map((doc) => doc.data() as RunnerRow))
+    } catch (error) {
+      handleGetAllError(error)
+    }
+  }, [])
+
+  useEffect(() => {
+    return runnersQuery.onSnapshot(
+      (querySnapshot) => {
+        querySnapshot.docs.map((value) => value.data() as RunnerRow)
+      },
+      (error) => {
+        handleGetAllError(error)
+      },
+    )
+  }, [])
+
+  return { data, refreshData }
+}
+
+export async function getAllRunners() {
+  const querySnapshot = await runnersQuery.get()
+  return querySnapshot.docs.map((doc) => doc.data()) as RunnerRow[]
+}
+
+export async function incrementRunnerLap(runnerId: string) {
+  try {
+    runnersRef.doc(runnerId)
+    const runnerRef = runnersRef.doc(runnerId)
+    runnerRef.set({ runnerId, lapCount: firestore.FieldValue.increment(1) }, { merge: true })
+  } catch (error) {
+    console.error(error)
+    throw new Error(`Something went wrong trying to add a lap to Runner number ${runnerId}.`)
+  }
+}
+
+export async function upsertRunner(runner: InputRunnerRow) {
+  try {
+    const runnerRef = runnersRef.doc(runner.runnerId)
+    await runnerRef.set(runner, { merge: true })
+  } catch (error) {
+    console.error(error)
+    throw new Error(`Something went wrong trying to update Runner number ${runner.runnerId}.`)
+  }
+}
+
+export async function deleteRunner(runnerId: string) {
+  try {
+    const runnerRef = runnersRef.doc(runnerId)
+    await runnerRef.delete()
+  } catch (error) {
+    console.error(error)
+    throw new Error(`Something went wrong trying to delete Runner number ${runnerId}.`)
+  }
+}
+
+function handleGetAllError(error: unknown) {
+  console.error(error)
+  throw new Error('Something went wrong trying to get the list of runners.')
+}
