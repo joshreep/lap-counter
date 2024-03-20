@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text: dark theme should match snapshot 1`] = `
+<Text
+  style={
+    {
+      "color": "rgb(255, 255, 255)",
+    }
+  }
+>
+  Hello there
+</Text>
+`;
+
+exports[`Text: light theme should match snapshot 1`] = `
+<Text
+  style={
+    {
+      "color": "#111",
+    }
+  }
+>
+  Hello there
+</Text>
+`;
+
+exports[`TextInput: dark theme should match snapshot 1`] = `
+<TextInput
+  style={
+    {
+      "backgroundColor": "rgba(255,255,255, .1)",
+      "borderBottomLeftRadius": 4,
+      "borderBottomRightRadius": 4,
+      "borderTopLeftRadius": 4,
+      "borderTopRightRadius": 4,
+      "color": "rgb(255, 255, 255)",
+    }
+  }
+  value="Check, check. Is this thing on?"
+/>
+`;
+
+exports[`TextInput: light theme should match snapshot 1`] = `
+<TextInput
+  style={
+    {
+      "backgroundColor": "rgba(0, 0, 0, .07)",
+      "borderBottomLeftRadius": 4,
+      "borderBottomRightRadius": 4,
+      "borderTopLeftRadius": 4,
+      "borderTopRightRadius": 4,
+      "color": "#111",
+    }
+  }
+  value="Check, check. Is this thing on?"
+/>
+`;
+
+exports[`View: dark theme should match snapshot 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "rgba(255, 255, 255, .07)",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "rgb(255, 255, 255)",
+      }
+    }
+  >
+    Hello there
+  </Text>
+</View>
+`;
+
+exports[`View: light theme should match snapshot 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "rgba(0, 0, 0, .05)",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#111",
+      }
+    }
+  >
+    Hello there
+  </Text>
+</View>
+`;
