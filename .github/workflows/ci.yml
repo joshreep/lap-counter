@@ -32,4 +32,4 @@ jobs:
       - name: github event
         run: echo '${{toJson(github.event)}}'
       - name: Build on EAS
-        run: eas update --non-interactive --branch dev --message "${{ github.event.pull_request.title }}""
+        run: eas update --non-interactive --branch dev --message "${{ github.event.pull_request.title }}"
