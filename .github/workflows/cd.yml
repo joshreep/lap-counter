@@ -13,21 +13,39 @@ jobs:
       matrix:
         node: [18.x, 20.x]
     steps:
+      - uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          release-type: expo
+
       - uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.release_created }}
+
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: yarn
+        if: ${{ steps.release.outputs.release_created }}
+
       - name: Setup Expo and EAS
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
+        if: ${{ steps.release.outputs.release_created }}
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+        if: ${{ steps.release.outputs.release_created }}
+
       - name: Lint
         run: yarn lint
+        if: ${{ steps.release.outputs.release_created }}
+
       - name: Test
         run: yarn test:ci
+        if: ${{ steps.release.outputs.release_created }}
+
       - name: Build on EAS
-        run: eas update --non-interactive --branch main --message ${{ github.event.head_commit.message }}
+        run: eas update --non-interactive --branch main --message "${{ github.event.head_commit.message }}"
+        if: ${{ steps.release.outputs.release_created }}
