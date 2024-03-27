@@ -1,8 +1,7 @@
 import { RunnerRow } from '@/database/types'
-import { Text } from './Themed'
-import { ListRenderItem, Pressable } from 'react-native'
-import styled from 'styled-components/native'
+import { ListRenderItem } from 'react-native'
 import { Link } from 'expo-router'
+import { Cell, Row } from './RunnerRowListItem.style'
 
 const RunnerRowListItem: ListRenderItem<RunnerRow> = ({ item }) => {
   return (
@@ -25,18 +24,3 @@ const RunnerRowListItem: ListRenderItem<RunnerRow> = ({ item }) => {
 }
 
 export default RunnerRowListItem
-
-const Row = styled(Pressable)`
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-  margin-top: 10px;
-  background-color: ${({ theme }) => theme.colors.background};
-  border-radius: 4px;
-`
-
-const Cell = styled(Text)<{ greedy?: boolean }>`
-  padding: 10px 20px;
-  font-size: 16px;
-  flex-grow: ${({ greedy }) => (greedy ? 2 : 0)};
-`

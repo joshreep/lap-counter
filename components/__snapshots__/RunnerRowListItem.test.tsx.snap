@@ -1,0 +1,389 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dark theme should match snapshot 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  href="/edit-modal?runnerId=1&name=George%20Washington&lapCount=100"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  role="link"
+  style={
+    {
+      "backgroundColor": "rgba(255, 255, 255, .07)",
+      "borderBottomLeftRadius": 4,
+      "borderBottomRightRadius": 4,
+      "borderTopLeftRadius": 4,
+      "borderTopRightRadius": 4,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "rgb(255, 255, 255)",
+        "flexGrow": 0,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    1
+  </Text>
+  <Text
+    greedy={true}
+    style={
+      {
+        "color": "rgb(255, 255, 255)",
+        "flexGrow": 2,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    George Washington
+  </Text>
+  <Text
+    style={
+      {
+        "color": "rgb(255, 255, 255)",
+        "flexGrow": 0,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    100
+     lap
+    s
+  </Text>
+</View>
+`;
+
+exports[`dark theme should render with no name prop 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  href="/edit-modal?runnerId=1&name=&lapCount=100"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  role="link"
+  style={
+    {
+      "backgroundColor": "rgba(255, 255, 255, .07)",
+      "borderBottomLeftRadius": 4,
+      "borderBottomRightRadius": 4,
+      "borderTopLeftRadius": 4,
+      "borderTopRightRadius": 4,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "rgb(255, 255, 255)",
+        "flexGrow": 0,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    1
+  </Text>
+  <Text
+    greedy={true}
+    style={
+      {
+        "color": "rgb(255, 255, 255)",
+        "flexGrow": 2,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  />
+  <Text
+    style={
+      {
+        "color": "rgb(255, 255, 255)",
+        "flexGrow": 0,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    100
+     lap
+    s
+  </Text>
+</View>
+`;
+
+exports[`light theme should match snapshot 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  href="/edit-modal?runnerId=1&name=George%20Washington&lapCount=100"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  role="link"
+  style={
+    {
+      "backgroundColor": "rgba(0, 0, 0, .05)",
+      "borderBottomLeftRadius": 4,
+      "borderBottomRightRadius": 4,
+      "borderTopLeftRadius": 4,
+      "borderTopRightRadius": 4,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#111",
+        "flexGrow": 0,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    1
+  </Text>
+  <Text
+    greedy={true}
+    style={
+      {
+        "color": "#111",
+        "flexGrow": 2,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    George Washington
+  </Text>
+  <Text
+    style={
+      {
+        "color": "#111",
+        "flexGrow": 0,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    100
+     lap
+    s
+  </Text>
+</View>
+`;
+
+exports[`light theme should render with no name prop 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  href="/edit-modal?runnerId=1&name=&lapCount=100"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  role="link"
+  style={
+    {
+      "backgroundColor": "rgba(0, 0, 0, .05)",
+      "borderBottomLeftRadius": 4,
+      "borderBottomRightRadius": 4,
+      "borderTopLeftRadius": 4,
+      "borderTopRightRadius": 4,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginTop": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#111",
+        "flexGrow": 0,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    1
+  </Text>
+  <Text
+    greedy={true}
+    style={
+      {
+        "color": "#111",
+        "flexGrow": 2,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  />
+  <Text
+    style={
+      {
+        "color": "#111",
+        "flexGrow": 0,
+        "fontSize": 16,
+        "paddingBottom": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+    100
+     lap
+    s
+  </Text>
+</View>
+`;

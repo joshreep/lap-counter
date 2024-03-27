@@ -19,6 +19,7 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
+  const { authStatus } = useContext(AuthContext)
   const [loaded, error] = useFonts({
     SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
@@ -30,20 +31,14 @@ export default function RootLayout() {
   }, [error])
 
   useEffect(() => {
-    if (loaded) {
+    if (loaded && authStatus !== AuthStatus.Initializing) {
       SplashScreen.hideAsync()
     }
-  }, [loaded])
+  }, [authStatus, loaded])
 
   if (!loaded) {
     return null
   }
-
-  return <RootLayoutNav />
-}
-
-function RootLayoutNav() {
-  const { authStatus } = useContext(AuthContext)
 
   if (authStatus !== AuthStatus.Authenticated) return <Redirect href="/sign-in" />
 
@@ -52,7 +47,6 @@ function RootLayoutNav() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="add-modal" options={{ presentation: 'modal', headerTitle: 'Add a New Runner' }} />
       <Stack.Screen name="edit-modal" options={{ presentation: 'modal', headerTitle: 'Edit an Existing Runner' }} />
-      {/* <Stack.Screen name="sign-in" options={{ title: 'Sign In', headerTitle: 'Sign In' }} /> */}
     </Stack>
   )
 }

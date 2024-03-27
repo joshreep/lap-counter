@@ -9,6 +9,8 @@ import { FC, PropsWithChildren } from 'react'
 import { ColorSchemeName } from 'react-native'
 import { ThemeProvider as SCThemeProvider } from 'styled-components/native'
 
+export const themes: ColorSchemeName[] = ['light', 'dark']
+
 export function getThemeWrapper(theme: ColorSchemeName) {
   const Wrapper: FC<PropsWithChildren> = ({ children }) => {
     return (
@@ -19,4 +21,12 @@ export function getThemeWrapper(theme: ColorSchemeName) {
   }
 
   return Wrapper
+}
+
+type ForEachThemeCallback = (theme: ColorSchemeName, wrapper: FC<PropsWithChildren>) => void
+
+export function forEachTheme(callback: ForEachThemeCallback) {
+  themes.forEach((theme) => {
+    callback(theme, getThemeWrapper(theme))
+  })
 }

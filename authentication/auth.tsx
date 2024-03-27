@@ -6,11 +6,12 @@ import {
   signInWithEmailAndPassword,
   type User,
 } from 'firebase/auth'
-import { FC, PropsWithChildren, createContext, useCallback, useEffect, useState } from 'react'
+import { createContext, FC, PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
 import { Alert, Linking } from 'react-native'
 import auth from './getAuth'
 
 export enum AuthStatus {
+  Initializing = 'INITIALIZING',
   Unauthenticated = 'UNAUTHENTICATED',
   Pending = 'PENDING',
   Authenticated = 'AUTHENTICATED',
@@ -18,7 +19,7 @@ export enum AuthStatus {
 }
 
 interface AuthContextType {
-  authStatus: AuthStatus
+  authStatus: AuthStatus | null
   error: null | Error
   resetPassword: (email: string) => void
   signIn: (email: string, password: string) => Promise<void>
@@ -27,18 +28,20 @@ interface AuthContextType {
   user: User | null
 }
 
+const authContextNotInitializedRejection = () => Promise.reject('AuthContext has not yet been initialized')
+
 export const AuthContext = createContext<AuthContextType>({
-  authStatus: AuthStatus.Unauthenticated,
+  authStatus: null,
   error: null,
   resetPassword: () => void 0,
-  signIn: () => Promise.reject('AuthContext has not yet been initialized'),
-  signOut: () => Promise.reject('AuthContext has not yet been initialized'),
-  signUp: () => Promise.reject('AuthContext has not yet been initialized'),
+  signIn: authContextNotInitializedRejection,
+  signOut: authContextNotInitializedRejection,
+  signUp: authContextNotInitializedRejection,
   user: null,
 })
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [authStatus, setAuthStatus] = useState(AuthStatus.Unauthenticated)
+  const [authStatus, setAuthStatus] = useState(AuthStatus.Initializing)
   const [user, setUser] = useState<User | null>(null)
   const [error, setError] = useState<Error | null>(null)
 
@@ -101,7 +104,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         if (authStatus === AuthStatus.Error && !user) return
         setError(null)
         setUser(user)
-        setAuthStatus(user ? AuthStatus.Authenticated : AuthStatus.Unauthenticated)
+        setAuthStatus(() => (user ? AuthStatus.Authenticated : AuthStatus.Unauthenticated))
       },
       error(error) {
         setError(error)
@@ -113,7 +116,12 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   })
 
   return (
-    <AuthContext.Provider value={{ authStatus, error, resetPassword, signIn, signOut, signUp, user }}>
+    <AuthContext.Provider
+      value={useMemo(
+        () => ({ authStatus, error, resetPassword, signIn, signOut, signUp, user }),
+        [authStatus, error, resetPassword, signIn, signOut, signUp, user],
+      )}
+    >
       {children}
     </AuthContext.Provider>
   )
