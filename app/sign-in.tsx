@@ -1,7 +1,7 @@
 import { AuthContext, AuthStatus } from '@/authentication/auth'
 import { Text, View } from '@/components/Themed'
 import InputGroup from '@/components/form/InputGroup'
-import { ButtonGroup } from '@/components/styles'
+import { ButtonGroup, LoadingAnimation } from '@/components/styles'
 import app from '@/firebaseConfig'
 import { FontAwesome5 } from '@expo/vector-icons'
 import { router } from 'expo-router'
@@ -196,6 +196,9 @@ export default function SignIn() {
           </>
         )}
       </InputContainer>
+      {authStatus === AuthStatus.Pending && (
+        <LoadingAnimation source={require('@/assets/animations/loading-animation.json')} />
+      )}
     </Container>
   )
 }

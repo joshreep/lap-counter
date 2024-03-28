@@ -1,22 +1,20 @@
-import { deleteRunner, upsertRunner } from '@/database/db-service'
-import { StatusBar } from 'expo-status-bar'
-import { FC, useCallback, useRef, useState } from 'react'
-import { Alert, Button, KeyboardAvoidingView, Platform, TextInput as RNTextInput } from 'react-native'
-import styled from 'styled-components/native'
-import SubmitAnimation, { SubmissionState } from './SubmitAnimation'
-import { View } from './Themed'
+import { DBService } from '@/database/db-service'
 import { InputRunnerRow } from '@/database/types'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
+import { FC, useCallback, useRef, useState } from 'react'
+import { Alert, Button, Platform, TextInput as RNTextInput } from 'react-native'
+import { Container, InputContainer } from './AddEditForm.style'
+import SubmitAnimation, { SubmissionState } from './SubmitAnimation'
 import InputGroup from './form/InputGroup'
 import { ButtonGroup } from './styles'
 
-interface AddEditFormProps {
-  showLapCount?: boolean
+export interface AddEditFormProps {
   mode: 'add' | 'edit'
 }
 
 const AddEditForm: FC<AddEditFormProps> = (props) => {
-  const { mode, showLapCount } = props
+  const { mode } = props
   const nameInputRef = useRef<RNTextInput>(null)
   const runnerNumberInputRef = useRef<RNTextInput>(null)
   const lapCountInputRef = useRef<RNTextInput>(null)
@@ -27,8 +25,9 @@ const AddEditForm: FC<AddEditFormProps> = (props) => {
   const [runnerName, setRunnerName] = useState(params.name ?? '')
   const [runnerNumber, setRunnerNumber] = useState(params.runnerId ?? '')
   const [lapCount, setLapCount] = useState(params.lapCount ? +params.lapCount : 0)
-
   const [submissionState, setSubmissionState] = useState(SubmissionState.Idle)
+
+  const showLapCount = mode === 'edit'
 
   const onSubmit = useCallback(async () => {
     nameInputRef.current?.blur()
@@ -42,7 +41,7 @@ const AddEditForm: FC<AddEditFormProps> = (props) => {
         runnerId: runnerNumber,
         lapCount: lapCount,
       }
-      await upsertRunner(input)
+      await DBService.upsertRunner(input)
       setSubmissionState(SubmissionState.Complete)
     } catch (error) {
       console.error(error)
@@ -57,7 +56,7 @@ const AddEditForm: FC<AddEditFormProps> = (props) => {
     setSubmissionState(SubmissionState.Pending)
 
     try {
-      params.runnerId && (await deleteRunner(params.runnerId))
+      params.runnerId && (await DBService.deleteRunner(params.runnerId))
       setSubmissionState(SubmissionState.Complete)
       navigate.goBack()
     } catch (error) {
@@ -83,44 +82,46 @@ const AddEditForm: FC<AddEditFormProps> = (props) => {
     if (mode === 'add') {
       setRunnerName('')
       setRunnerNumber('')
-      showLapCount && setLapCount(0)
       nameInputRef.current?.focus()
     } else {
       navigate.goBack()
     }
-  }, [mode, navigate, showLapCount])
+  }, [mode, navigate])
 
   return (
     <Container>
       <InputContainer>
         <InputGroup
-          label="Runner Number"
-          ref={runnerNumberInputRef}
+          disabled={mode === 'edit'}
           keyboardType="number-pad"
-          returnKeyType="done"
+          label="Runner Number"
           onChangeText={setRunnerNumber}
           onSubmitEditing={() => nameInputRef.current?.focus()}
+          ref={runnerNumberInputRef}
+          returnKeyType="done"
+          testID="runnerIdInput"
           value={runnerNumber}
-          disabled={mode === 'edit'}
         />
         <InputGroup
-          label="Name"
-          ref={nameInputRef}
           autoCapitalize="words"
-          textContentType="name"
-          returnKeyType="next"
-          onSubmitEditing={() => (mode === 'add' ? onSubmit() : lapCountInputRef.current?.focus())}
+          label="Name"
           onChangeText={setRunnerName}
+          onSubmitEditing={() => (mode === 'add' ? onSubmit() : lapCountInputRef.current?.focus())}
+          ref={nameInputRef}
+          returnKeyType="next"
+          testID="runnerNameInput"
+          textContentType="name"
           value={runnerName}
         />
         {showLapCount && (
           <InputGroup
-            label="Lap Count"
-            ref={lapCountInputRef}
             keyboardType="number-pad"
-            returnKeyType="done"
+            label="Lap Count"
             onChangeText={(text) => setLapCount(+text)}
             onSubmitEditing={() => onSubmit()}
+            ref={lapCountInputRef}
+            returnKeyType="done"
+            testID="lapCountInput"
             value={lapCount.toString()}
           />
         )}
@@ -139,19 +140,3 @@ const AddEditForm: FC<AddEditFormProps> = (props) => {
 }
 
 export default AddEditForm
-
-const Container = styled(KeyboardAvoidingView).attrs({
-  behavior: Platform.OS === 'ios' ? 'padding' : 'height',
-})`
-  flex: 1;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 40px 20px 20px;
-`
-
-const InputContainer = styled(View)`
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  background-color: transparent;
-`

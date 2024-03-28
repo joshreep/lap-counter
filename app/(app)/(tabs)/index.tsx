@@ -10,7 +10,7 @@ import styled from 'styled-components/native'
 
 import { Text, TextInput } from '@/components/Themed'
 import SubmitAnimation, { SubmissionState } from '@/components/SubmitAnimation'
-import { incrementRunnerLap } from '@/database/db-service'
+import { DBService } from '@/database/db-service'
 
 export default function IndexTabScreen() {
   const textInputRef = useRef<RNTextInput>(null)
@@ -24,7 +24,7 @@ export default function IndexTabScreen() {
       textInputRef.current?.blur()
 
       try {
-        await incrementRunnerLap(event.nativeEvent.text)
+        await DBService.incrementRunnerLap(event.nativeEvent.text)
         setSubmissionState(SubmissionState.Complete)
       } catch (error) {
         console.error(error)

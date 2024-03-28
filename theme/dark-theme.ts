@@ -11,7 +11,7 @@ const DarkTheme: DefaultTheme = {
     inputBackground: 'rgba(255,255,255, .1)',
     notification: 'rgb(255, 69, 58)',
     primary: 'rgb(10, 132, 255)',
-    rootBackground: 'rgb(0, 0, 0)',
+    rootBackground: '#111',
     text: 'rgb(255, 255, 255)',
   },
   dark: true,

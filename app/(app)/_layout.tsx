@@ -1,8 +1,7 @@
 import { AuthContext, AuthStatus } from '@/authentication/auth'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { useFonts } from 'expo-font'
-import { Redirect, Stack } from 'expo-router'
-import * as SplashScreen from 'expo-splash-screen'
+import { Redirect, SplashScreen, Stack } from 'expo-router'
 import { useContext, useEffect } from 'react'
 
 export {
@@ -29,21 +28,25 @@ export default function RootLayout() {
     if (error) throw error
   }, [error])
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync()
-    }
-  }, [loaded])
-
-  if (!loaded) {
-    return null
-  }
-
-  return <RootLayoutNav />
+  return <RootNavLayout fontsLoaded={loaded} />
 }
 
-function RootLayoutNav() {
+type RootNavLayoutProps = {
+  fontsLoaded: boolean
+}
+
+function RootNavLayout(props: RootNavLayoutProps) {
   const { authStatus } = useContext(AuthContext)
+
+  useEffect(() => {
+    if (props.fontsLoaded && authStatus !== AuthStatus.Initializing) {
+      SplashScreen.hideAsync()
+    }
+  }, [authStatus, props.fontsLoaded])
+
+  if (!props.fontsLoaded) {
+    return null
+  }
 
   if (authStatus !== AuthStatus.Authenticated) return <Redirect href="/sign-in" />
 
@@ -52,7 +55,6 @@ function RootLayoutNav() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="add-modal" options={{ presentation: 'modal', headerTitle: 'Add a New Runner' }} />
       <Stack.Screen name="edit-modal" options={{ presentation: 'modal', headerTitle: 'Edit an Existing Runner' }} />
-      {/* <Stack.Screen name="sign-in" options={{ title: 'Sign In', headerTitle: 'Sign In' }} /> */}
     </Stack>
   )
 }

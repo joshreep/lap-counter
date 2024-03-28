@@ -1,36 +1,27 @@
-import { getThemeWrapper } from '@/test-utils/ThemeWrapper'
-import { render, screen } from '@testing-library/react-native'
-import { ColorSchemeName } from 'react-native'
+import { forEachTheme } from '@/test-utils/ThemeWrapper'
+import { render } from '@testing-library/react-native'
 import { Text, TextInput, View } from './Themed'
 
-const themes: ColorSchemeName[] = ['dark', 'light']
-
-themes.forEach((theme) => {
-  const wrapper = getThemeWrapper(theme)
-
-  describe(`TextInput: ${theme} theme`, () => {
-    test('should match snapshot', () => {
-      render(<TextInput value="Check, check. Is this thing on?" />, { wrapper })
-      expect(screen.toJSON()).toMatchSnapshot()
+forEachTheme((theme, wrapper) => {
+  describe(`${theme} theme`, () => {
+    test('TextInput should match snapshot', () => {
+      const container = render(<TextInput value="Check, check. Is this thing on?" />, { wrapper })
+      expect(container.toJSON()).toMatchSnapshot()
     })
-  })
 
-  describe(`Text: ${theme} theme`, () => {
-    test('should match snapshot', () => {
-      render(<Text>Hello there</Text>, { wrapper })
-      expect(screen.toJSON()).toMatchSnapshot()
+    test('Text should match snapshot', () => {
+      const container = render(<Text>Hello there</Text>, { wrapper })
+      expect(container.toJSON()).toMatchSnapshot()
     })
-  })
 
-  describe(`View: ${theme} theme`, () => {
-    test('should match snapshot', () => {
-      render(
+    test('View should match snapshot', () => {
+      const container = render(
         <View>
           <Text>Hello there</Text>
         </View>,
         { wrapper },
       )
-      expect(screen.toJSON()).toMatchSnapshot()
+      expect(container.toJSON()).toMatchSnapshot()
     })
   })
 })
