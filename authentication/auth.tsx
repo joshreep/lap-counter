@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   type User,
 } from 'firebase/auth'
-import { createContext, FC, PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
+import { createContext, FC, PropsWithChildren, useCallback, useEffect, useState } from 'react'
 import { Alert, Linking } from 'react-native'
 import auth from './getAuth'
 
@@ -101,10 +101,10 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     return onAuthStateChanged(auth, {
       next(user) {
-        if (authStatus === AuthStatus.Error && !user) return
         setError(null)
         setUser(user)
-        setAuthStatus(() => (user ? AuthStatus.Authenticated : AuthStatus.Unauthenticated))
+        if (user) setAuthStatus(AuthStatus.Authenticated)
+        else setAuthStatus(AuthStatus.Unauthenticated)
       },
       error(error) {
         setError(error)
@@ -113,15 +113,10 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       },
       complete() {},
     })
-  })
+  }, [])
 
   return (
-    <AuthContext.Provider
-      value={useMemo(
-        () => ({ authStatus, error, resetPassword, signIn, signOut, signUp, user }),
-        [authStatus, error, resetPassword, signIn, signOut, signUp, user],
-      )}
-    >
+    <AuthContext.Provider value={{ authStatus, error, resetPassword, signIn, signOut, signUp, user }}>
       {children}
     </AuthContext.Provider>
   )

@@ -2,7 +2,7 @@ import { forEachTheme } from '@/test-utils/ThemeWrapper'
 import { act, fireEvent, renderRouter } from 'expo-router/testing-library'
 import AddEditForm, { AddEditFormProps } from './AddEditForm'
 import { DBService } from '@/database/db-service'
-import { Alert, TextInput } from 'react-native'
+import { Alert } from 'react-native'
 import { router } from 'expo-router'
 
 const modes: AddEditFormProps['mode'][] = ['add', 'edit']

@@ -1,8 +1,7 @@
 import { AuthContext, AuthStatus } from '@/authentication/auth'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { useFonts } from 'expo-font'
-import { Redirect, Stack } from 'expo-router'
-import * as SplashScreen from 'expo-splash-screen'
+import { Redirect, SplashScreen, Stack } from 'expo-router'
 import { useContext, useEffect } from 'react'
 
 export {
@@ -19,7 +18,6 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  const { authStatus } = useContext(AuthContext)
   const [loaded, error] = useFonts({
     SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
@@ -30,13 +28,23 @@ export default function RootLayout() {
     if (error) throw error
   }, [error])
 
+  return <RootNavLayout fontsLoaded={loaded} />
+}
+
+type RootNavLayoutProps = {
+  fontsLoaded: boolean
+}
+
+function RootNavLayout(props: RootNavLayoutProps) {
+  const { authStatus } = useContext(AuthContext)
+
   useEffect(() => {
-    if (loaded && authStatus !== AuthStatus.Initializing) {
+    if (props.fontsLoaded && authStatus !== AuthStatus.Initializing) {
       SplashScreen.hideAsync()
     }
-  }, [authStatus, loaded])
+  }, [authStatus, props.fontsLoaded])
 
-  if (!loaded) {
+  if (!props.fontsLoaded) {
     return null
   }
 
