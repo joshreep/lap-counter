@@ -30,4 +30,4 @@ jobs:
       - name: Test
         run: yarn test:ci
       - name: Build on EAS
-        run: eas update --non-interactive --branch dev --message "${{ github.event.pull_request.title }}"
+        run: eas update --non-interactive --branch dev --message "${{ github.event.pull_request.title }} (node ${{ matrix.node }})"
