@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/joshreep/lap-counter/compare/v1.1.0...v1.1.1) (2024-03-30)
+
+
+### Bug Fixes
+
+* fixes the splash screen not dismissing issue for real this time ([025681d](https://github.com/joshreep/lap-counter/commit/025681d1e3256716ee7afd519efd0d374f0b5538))
+* fixes the splash screen not dismissing issue for real this time ([e61bbd4](https://github.com/joshreep/lap-counter/commit/e61bbd46158a2bea96f9e4ff944d8a5ceb82fd7d))
+
 ## [1.1.0](https://github.com/joshreep/lap-counter/compare/v1.0.0...v1.1.0) (2024-03-28)
 
 
