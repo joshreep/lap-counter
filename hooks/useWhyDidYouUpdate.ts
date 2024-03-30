@@ -21,7 +21,7 @@ export default function useWhyDidYouUpdate(name: string, props: Props, predicate
       })
 
       if (Object.keys(changesObj).length) {
-        console.debug(`[${name}]`, changesObj)
+        console.log(`[${name}]`, changesObj)
       }
     }
 

@@ -8,7 +8,7 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest --watch",
-    "test:ci": "jest",
+    "test:ci": "jest --ci",
     "lint": "eslint",
     "prepare": "husky"
   },

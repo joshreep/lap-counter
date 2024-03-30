@@ -1,5 +1,5 @@
 import { AuthProvider } from '@/authentication/auth'
-import { useColorScheme } from '@/components/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import SCDarkTheme from '@/theme/dark-theme'
 import SCLightTheme from '@/theme/light-theme'
 import {
