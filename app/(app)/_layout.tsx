@@ -35,18 +35,10 @@ type RootNavLayoutProps = {
   fontsLoaded: boolean
 }
 
-function RootNavLayout(props: RootNavLayoutProps) {
+function RootNavLayout({ fontsLoaded }: RootNavLayoutProps) {
   const { authStatus } = useContext(AuthContext)
 
-  useEffect(() => {
-    if (props.fontsLoaded && authStatus !== AuthStatus.Initializing) {
-      SplashScreen.hideAsync()
-    }
-  }, [authStatus, props.fontsLoaded])
-
-  if (!props.fontsLoaded) {
-    return null
-  }
+  if (!fontsLoaded) return null
 
   if (authStatus !== AuthStatus.Authenticated) return <Redirect href="/sign-in" />
 

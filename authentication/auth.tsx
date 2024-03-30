@@ -1,3 +1,4 @@
+import { SplashScreen } from 'expo-router'
 import {
   createUserWithEmailAndPassword,
   signOut as fbSignOut,
@@ -114,6 +115,10 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
       complete() {},
     })
   }, [])
+
+  useEffect(() => {
+    if (![AuthStatus.Authenticated, AuthStatus.Initializing].includes(authStatus)) SplashScreen.hideAsync()
+  }, [authStatus])
 
   return (
     <AuthContext.Provider value={{ authStatus, error, resetPassword, signIn, signOut, signUp, user }}>

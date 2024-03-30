@@ -1,11 +1,12 @@
-import React from 'react'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
-import { Link, Tabs } from 'expo-router'
+import { Link, SplashScreen, Tabs } from 'expo-router'
+import React, { useContext, useEffect } from 'react'
 import { Pressable } from 'react-native'
 
-import Colors from '@/constants/Colors'
-import { useColorScheme } from '@/components/useColorScheme'
+import { AuthContext, AuthStatus } from '@/authentication/auth'
 import { useClientOnlyValue } from '@/components/useClientOnlyValue'
+import { useColorScheme } from '@/components/useColorScheme'
+import Colors from '@/constants/Colors'
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome5>['name']; color: string }) {
@@ -14,6 +15,11 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome5>['na
 
 export default function TabLayout() {
   const colorScheme = useColorScheme()
+  const { authStatus } = useContext(AuthContext)
+
+  useEffect(() => {
+    if (authStatus !== AuthStatus.Initializing) SplashScreen.hideAsync()
+  }, [authStatus])
 
   return (
     <Tabs

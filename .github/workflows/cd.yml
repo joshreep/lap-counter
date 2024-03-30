@@ -47,5 +47,5 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
 
       - name: Build on EAS
-        run: eas update --non-interactive --branch main --message "${{ github.event.head_commit.message }}"
+        run: eas update --non-interactive --branch main --message "${{ github.event.head_commit.message }} (node ${{ matrix.node }})"
         if: ${{ steps.release.outputs.release_created }}
