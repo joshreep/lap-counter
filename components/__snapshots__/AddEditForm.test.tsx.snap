@@ -33,6 +33,7 @@ exports[`dark theme add mode should match snapshot 1`] = `
         [
           {
             "alignItems": "center",
+            "backgroundColor": "#111",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -265,6 +266,7 @@ exports[`dark theme edit mode should match snapshot 1`] = `
         [
           {
             "alignItems": "center",
+            "backgroundColor": "#111",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -608,6 +610,7 @@ exports[`light theme add mode should match snapshot 1`] = `
         [
           {
             "alignItems": "center",
+            "backgroundColor": "rgb(255, 255, 255)",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -840,6 +843,7 @@ exports[`light theme edit mode should match snapshot 1`] = `
         [
           {
             "alignItems": "center",
+            "backgroundColor": "rgb(255, 255, 255)",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,

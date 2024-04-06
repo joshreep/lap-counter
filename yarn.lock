@@ -2431,6 +2431,11 @@
     "@types/yargs" "^17.0.8"
     chalk "^4.0.0"
 
+"@joshreep/captain-hooks@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@joshreep/captain-hooks/-/captain-hooks-1.0.1.tgz#344a692cb1a8753675a805863c8059e72db8da5e"
+  integrity sha512-a0JlKWsgAtqDpB4LoUGFGNd1bFhJIm6K1AkWmXipWx6a7iXh8+KPsRrHpwCeXQGZnGI77WooQB3W9cNoISDoAQ==
+
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz#7e02e6eb5df901aaedb08514203b096614024098"
