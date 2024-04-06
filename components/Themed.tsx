@@ -13,7 +13,7 @@ type ThemeProps = {
 }
 
 export type TextProps = ThemeProps & DefaultText['props']
-export type ViewProps = ThemeProps & DefaultView['props']
+export type ViewProps = ThemeProps & DefaultView['props'] & { rootBackground?: boolean }
 export type TextInputProps = ThemeProps & DefaultTextInput['props']
 
 export const TextInput = styled(DefaultTextInput)`
@@ -28,5 +28,7 @@ export const Text = styled(DefaultText)`
 
 export const View = styled(({ lightColor, darkColor, ...rest }: ViewProps) => <DefaultView {...rest} />)`
   background-color: ${(props) =>
-    (props.theme.dark ? props.darkColor : props.lightColor) ?? props.theme.colors.background};
+    (props.theme.dark ? props.darkColor : props.lightColor) ?? props.rootBackground
+      ? props.theme.colors.rootBackground
+      : props.theme.colors.background};
 `

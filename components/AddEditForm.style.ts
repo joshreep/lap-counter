@@ -9,6 +9,7 @@ export const Container = styled(KeyboardAvoidingView).attrs({
   align-items: center;
   justify-content: flex-start;
   padding: 40px 20px 20px;
+  background-color: ${({ theme }) => theme.colors.rootBackground};
 `
 
 export const InputContainer = styled(View)`
@@ -16,5 +17,4 @@ export const InputContainer = styled(View)`
   gap: 20px;
   width: 100%;
   background-color: transparent;
-  /* color: rgb(255, 137, 137); */
 `

@@ -16,12 +16,11 @@ export default function SettingsTabScreen() {
 
 const SignOutButton = styled(Button).attrs(({ theme }) => ({ color: theme.colors.error }))``
 
-const Container = styled(View)`
+const Container = styled(View).attrs({ rootBackground: true })`
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
   gap: 20px;
-  background-color: ${({ theme }) => theme.colors.rootBackground};
 `
