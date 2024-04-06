@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/joshreep/lap-counter/compare/v1.2.0...v1.2.1) (2024-04-06)
+
+
+### Bug Fixes
+
+* new build ([783d07e](https://github.com/joshreep/lap-counter/commit/783d07e3047c05cc546c46363e2589e640ae374d))
+
 ## [1.2.0](https://github.com/joshreep/lap-counter/compare/v1.1.1...v1.2.0) (2024-04-06)
 
 
