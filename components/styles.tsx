@@ -12,5 +12,5 @@ export const BaseAnimation = styled(LottieView).attrs({ autoPlay: true })`
   width: 200px;
   height: 200px;
 `
-export const CheckAnimation = styled(BaseAnimation).attrs({ loop: false })``
+export const CheckAnimation = styled(BaseAnimation).attrs({ loop: false, speed: 2 })``
 export const LoadingAnimation = styled(BaseAnimation).attrs({ loop: true })``

@@ -20,7 +20,7 @@ const SubmitAnimation: FC<SubmitAnimationProps> = (props) => {
     (isCancelled: boolean) => {
       setTimeout(() => {
         onAnimationFinish(isCancelled)
-      }, 250)
+      }, 150)
     },
     [onAnimationFinish],
   )
