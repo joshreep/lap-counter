@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.0](https://github.com/joshreep/lap-counter/compare/v1.1.1...v1.2.0) (2024-04-06)
+
+
+### Features
+
+* add ActivityIndicator for initial loading ([eadb16f](https://github.com/joshreep/lap-counter/commit/eadb16fa319bc2a9c75cae09cfb18e1f48a69293))
+* make submit animation faster ([0f62937](https://github.com/joshreep/lap-counter/commit/0f62937b785b7606fa576877e2342a78593ad1c1))
+* various fixes and improvements ([9b08f58](https://github.com/joshreep/lap-counter/commit/9b08f583e1b21277015d12afe659982b1f30c4e6))
+
 ## [1.1.1](https://github.com/joshreep/lap-counter/compare/v1.1.0...v1.1.1) (2024-03-30)
 
 
