@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.0](https://github.com/joshreep/lap-counter/compare/v1.3.0...v1.4.0) (2024-12-19)
+
+
+### Features
+
+* github pages setup ([26ef1f8](https://github.com/joshreep/lap-counter/commit/26ef1f8627dd8baa4707c21dfb2ad9486b6d2a76))
+* setup gh-pages for web deployment ([80f0e32](https://github.com/joshreep/lap-counter/commit/80f0e32092ef173d832fda8587308b353f82f5af))
+* setup gh-pages for web deployment ([80f0e32](https://github.com/joshreep/lap-counter/commit/80f0e32092ef173d832fda8587308b353f82f5af))
+
 ## [1.3.0](https://github.com/joshreep/lap-counter/compare/v1.2.1...v1.3.0) (2024-04-06)
 
 
